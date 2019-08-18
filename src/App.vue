@@ -1,14 +1,31 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <div v-if="$route.meta.keepAlive">
+      <keep-alive><hdiv ></hdiv></keep-alive>
+      <keep-alive><left></left></keep-alive>
+      <workDiv></workDiv>
+    </div>
+    <div v-if="!$route.meta.keepAlive">
+      <router-view ></router-view>
+    </div>
   </div>
 </template>
-
 <script>
+
+import HDIV from './components/head/Header'
+import Left from './components/head/Left'
+import MDIV from './components/head/Main'
+
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    hdiv: HDIV,
+    left: Left,
+    workDiv: MDIV
+  }
 }
+
 </script>
 
 <style>
@@ -18,6 +35,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

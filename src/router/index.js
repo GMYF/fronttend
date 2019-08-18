@@ -1,15 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import UserLogin from '@/page/user/UserLogin'
+import Dashboard from '@/page/dashboard/dashboard'
+import UserDetail from '@/page/user/detail'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/user/login',
+      name: 'login',
+      component: UserLogin,
+      meta: {
+        keepAlive: false
+      }
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/user/detail',
+      name: 'detail',
+      component: UserDetail,
+      meta: {
+        keepAlive: true
+      }
     }
   ]
 })
