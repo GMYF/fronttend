@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import UserLogin from '@/page/user/UserLogin'
-import Dashboard from '@/page/dashboard/dashboard'
-import UserDetail from '@/page/user/detail'
+import Dashboard from '@/page/dashboard/Dashboard'
+import UserDetail from '@/page/user/Detail'
 
 Vue.use(Router)
 

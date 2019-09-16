@@ -6,14 +6,12 @@ import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
-import QS from 'qs';
-import './directive';
-import https from './http';
+import QS from 'qs'
+import './directive'
 
 /* 在vue原型链中导入axios和QS */
-Vue.prototype.qs = QS;
-Vue.prototype.$axios = axios;
-Vue.prototype.https = https;
+Vue.prototype.qs = QS
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.use(Element)
 

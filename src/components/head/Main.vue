@@ -1,7 +1,7 @@
 <template>
-    <div class="main_div">
-        <div class="work"><router-view ></router-view></div>
-    </div>
+  <div class="main_div">
+    <div class="work"><router-view /></div>
+  </div>
 </template>
 <style scoped>
     .main_div{
@@ -15,7 +15,5 @@
     }
 </style>
 <script>
-export default {
-    
-}
+export default {}
 </script>
