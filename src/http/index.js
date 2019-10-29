@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-axios.defaults.timeout = 500;
+axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 /* 配置接口地址 */
 axios.defaults.baseUrl = '';
@@ -21,7 +21,11 @@ axios.interceptors.request.use((config) => {
 /* 返回状态判断（添加响应式拦截） */
 axios.interceptors.response.use((res) => {
   /* 对响应数据操作 */
-  if (!res.data.success) {
+  if (res.data.code === 500210) {
+    /* 获取后端返回的状态，如果是500210，则是session超时，重新登录 */
+    /* 这里何不改为，先跳转到自定义页面，然后通过点击跳转登录 */
+    location.replace('/#/logout')
+  } else if (!res.data.success) {
     return Promise.resolve(res);
   }
   return res;

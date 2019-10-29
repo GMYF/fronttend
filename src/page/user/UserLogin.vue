@@ -69,7 +69,7 @@ export default {
         'password': this.user.password
       }
       https.fetchPost('/api/user/login', param).then(data => {
-        if (data.data.status === 1) {
+        if (data.data.code === 1) {
           // 跳转页面
           this.$router.push({path: '/dashboard'})
         }

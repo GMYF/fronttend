@@ -16,7 +16,8 @@
             </span>
           </div>
         </div>
-    </el-dialog>
+        </el-dialog>
+        <a href="#" @click="goDetail">跳转用户详情</a>
     </div>
 </template>
 <style scoped>
@@ -26,10 +27,12 @@
   }
 </style>
 <script>
+import https from '../..//http';
 export default {
   data () {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      userId: 1
     }
   },
   created () {
@@ -45,6 +48,14 @@ export default {
           done();
         })
         .catch(_ => {});
+    },
+    goDetail () {
+      https.fetchGet('/api/user/detail/' + this.userId).then(data => {
+        if (data.data.code === 1) {
+          // 跳转页面
+          console.log('用户详情获取成功')
+        }
+      })
     }
   }
 }
