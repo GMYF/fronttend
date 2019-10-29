@@ -4,7 +4,6 @@ import UserLogin from '@/page/user/UserLogin'
 import Dashboard from '@/page/dashboard/dashboard'
 import UserDetail from '@/page/user/detail'
 import SessionOut from '@/page/common/SessionOut'
-
 Vue.use(Router)
 
 export default new Router({

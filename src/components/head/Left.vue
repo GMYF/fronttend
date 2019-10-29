@@ -1,13 +1,13 @@
 <template>
-    <div class="head_lt">
+  <div class="head_lt">
     <div class="sub_div">
-        <a href="#" @click="goUser()">用户管理</a>
+      <a
+        href="#"
+        @click="goUser()">用户管理</a>
     </div>
-    
     <div class="sub_div">测试</div>
-    
     <div class="sub_div">测试</div>
-    </div>
+  </div>
 </template>
 <style scoped>
     .head_lt{

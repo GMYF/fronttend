@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div v-if="$route.meta.keepAlive">
-      <keep-alive><hdiv ></hdiv></keep-alive>
-      <keep-alive><left></left></keep-alive>
-      <workDiv></workDiv>
+      <keep-alive><hdiv/></keep-alive>
+      <keep-alive><left/></keep-alive>
+      <workDiv/>
     </div>
     <div v-if="!$route.meta.keepAlive">
-      <router-view ></router-view>
+      <router-view />
     </div>
   </div>
 </template>
@@ -15,7 +15,6 @@
 import HDIV from './components/head/Header'
 import Left from './components/head/Left'
 import MDIV from './components/head/Main'
-
 
 export default {
   name: 'App',
