@@ -53,5 +53,6 @@ module.exports = {
     'computed-property-spacing': [2, 'never'],
     // TODO 关闭 强制方法必须返回值，TypeScript强类型，不配置
     // 'consistent-return': 0
+    'linebreak-style': [0, 'error', 'windows']
   }
 }
