@@ -9,6 +9,15 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/user/login',
+      name: 'home',
+      component: UserLogin,
+      meta: {
+        keepAlive: false
+      }
+    },
+    {
       path: '/user/login',
       name: 'login',
       component: UserLogin,
@@ -40,5 +49,6 @@ export default new Router({
         keepAlive: true
       }
     }
-  ]
+  ],
+  mode: 'history'
 })

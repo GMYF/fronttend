@@ -5,13 +5,10 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import axios from 'axios'
-import QS from 'qs'
 import './directive'
-
-/* 在vue原型链中导入axios和QS */
-Vue.prototype.qs = QS
-Vue.prototype.$axios = axios
+import {getRequest, postRequest} from './http'
+Vue.prototype.$getRequest = getRequest
+Vue.prototype.$postRequest = postRequest
 Vue.config.productionTip = false
 Vue.use(Element)
 

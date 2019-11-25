@@ -58,7 +58,6 @@
 }
 </style>
 <script>
-import https from '../..//http'
 
 export default {
   name: 'DashBoard',
@@ -74,19 +73,20 @@ export default {
     }
   },
   created () {
-    this.onsubmit = function () {
-      console.log(this.user.name + ',' + this.user.password)
+  },
+  methods: {
+    loginFunc (data) {
+      if (data.data.code === 1) {
+        // 跳转页面
+        this.$router.push({path: '/dashboard'})
+      }
+    },
+    onsubmit () {
       let param = {
         'username': this.user.name,
         'password': this.user.password
       }
-      console.log(param.username + '----' + param.password)
-      https.fetchPost('/api/user/login', param).then(data => {
-        if (data.data.code === 1) {
-          // 跳转页面
-          this.$router.push({path: '/dashboard'})
-        }
-      })
+      this.$postRequest('/api/user/login', param, this.loginFunc, '0')
     }
   }
 }

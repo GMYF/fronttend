@@ -33,6 +33,30 @@
     <a
       href="#"
       @click="goDetail">跳转用户详情</a>
+    <div>
+      <el-upload
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :before-remove="beforeRemove"
+        :before-upload="beforeUpload"
+        :limit="3"
+        :on-exceed="handlExceed"
+        :file-list="fileList"
+        class="upload-demo"
+        action="/api/user/file"
+        multiple>
+        <el-button
+          size="small"
+          type="primary">点击上传</el-button>
+        <div
+          slot="tip"
+          calss="el-upload__tip">只能上传xxx文件</div>
+      </el-upload>
+      <el-button
+        size="mini"
+        type="primary"
+        @click="submitUpload">手动上传</el-button>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -40,14 +64,19 @@
     width: 300px;
     height: 120px;
   }
+  .upload-demo{
+    width: 300px;
+    height:150px;
+  }
 </style>
 <script>
-import https from '../..//http'
 export default {
   data () {
     return {
       dialogVisible: false,
-      userId: 0
+      userId: 0,
+      fileList: [],
+      uploadForm: new FormData()
     }
   },
   created () {
@@ -65,11 +94,35 @@ export default {
         .catch(_ => {})
     },
     goDetail () {
-      https.fetchGet('/api/user/detail/' + this.userId).then(data => {
+      this.$getRequest('/api/user/detail/' + this.userId).then(data => {
         if (data.data.status === 1) {
           // 跳转页面
           console.log('用户详情获取成功')
         }
+      })
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+      this.fileList = fileList
+    },
+    handlePreview (file) {
+      console.log(file)
+    },
+    handlExceed () {
+      this.$message.warning('当前选择了3个文件，本次选择了个文件')
+    },
+    beforeRemove (file, fileList) {
+
+    },
+    beforeUpload (file, fileList) {
+      console.log('file->' + file + 'fileList' + fileList)
+      this.uploadForm.append('file', file)
+      return false
+    },
+    submitUpload () {
+      let data = this.uploadForm
+      this.$postRequest('/api/user/file', data).then(data => {
+        console.log('data->' + data)
       })
     }
   }
